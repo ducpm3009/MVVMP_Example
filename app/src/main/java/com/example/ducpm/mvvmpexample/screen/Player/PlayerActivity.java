@@ -19,7 +19,7 @@ public class PlayerActivity extends BaseActivity {
 
         String name = "Ma boy amir  ";
         String nickName = "Miraclul";
-        mViewModel = new PlayerViewModel(name, nickName);
+//        mViewModel = new PlayerViewModel(player);
 
         PlayerContract.Presenter presenter = new PlayerPresenter(mViewModel);
         mViewModel.setPresenter(presenter);

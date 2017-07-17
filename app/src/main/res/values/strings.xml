@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MVVMPExample</string>
+    <string name="action_failed">Action Failed, please try again</string>
+    <string name="delete_button">delete</string>
 </resources>
