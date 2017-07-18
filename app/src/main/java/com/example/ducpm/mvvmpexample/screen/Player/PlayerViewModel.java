@@ -1,22 +1,26 @@
 package com.example.ducpm.mvvmpexample.screen.Player;
 
+import android.content.Context;
 import android.databinding.BaseObservable;
-import android.databinding.Bindable;
+import com.example.ducpm.mvvmpexample.BaseRecyclerViewAdapter;
+import com.example.ducpm.mvvmpexample.data.model.Player;
 
 /**
  * Exposes the data to be used in the Player screen.
  */
 
-public class PlayerViewModel extends BaseObservable implements PlayerContract.ViewModel  {
-
+public class PlayerViewModel extends BaseObservable implements PlayerContract.ViewModel,
+        BaseRecyclerViewAdapter.OnRecyclerViewItemClickListener<Player> {
+    private PlayerAdapter mAdapter;
+    private Context mContext;
     private PlayerContract.Presenter mPresenter;
-    private String mName;
-    private String mNickName;
 
-    public PlayerViewModel(String name, String nickName) {
-        mName = name;
-        mNickName = nickName;
+    public PlayerViewModel(PlayerAdapter adapter, Context context) {
+        mAdapter = adapter;
+        mAdapter.setItemClickListener(this);
+        mContext = context;
     }
+
 
     @Override
     public void onStart() {
@@ -33,21 +37,24 @@ public class PlayerViewModel extends BaseObservable implements PlayerContract.Vi
         mPresenter = presenter;
     }
 
-    @Bindable
-    String getNickName() {
-        return mNickName;
+    @Override
+    public void onActionSuccess() {
+
     }
 
-    void setNickName(String nickName) {
-        mNickName = nickName;
+    @Override
+    public void onActionFailed(String msg) {
+
     }
 
-    @Bindable
-    String getName() {
-        return mName;
+    @Override
+    public void onItemRecyclerViewClick(Player item) {
+
     }
 
-    void setName(String name) {
-        mName = name;
+    PlayerAdapter getAdapter() {
+        return mAdapter;
     }
 }
+
+
